@@ -4,8 +4,10 @@ import { LANGUAGES } from "@/lib/contants";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
+import { useDispatch, useSelector } from "react-redux";
 
 export const LanguageSelector = () => {
+
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
     LANGUAGES[0]
   );
