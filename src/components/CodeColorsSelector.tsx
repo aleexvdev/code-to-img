@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from 'react';
-import { THEMES } from '@/lib/contants';
+import { CODE_COLORS } from '@/lib/contants';
 import { ChevronDown } from 'lucide-react';
 import OutsideClickHandler from "react-outside-click-handler";
 
-export const ThemeSelector = () => {
+export const CodeColorsSelector = () => {
   const [selectedTheme, setSelectedTheme] = useState<string>(
-    THEMES[0]
+    CODE_COLORS[0]
   );
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
@@ -19,7 +19,7 @@ export const ThemeSelector = () => {
     <OutsideClickHandler onOutsideClick={() => setShowDropdown(false)}>
       <div className="w-max">
         <div className="relative">
-          <p className="text-white text-lg text-left mb-2">Theme</p>
+          <p className="text-white text-lg text-left mb-2">Code Colors</p>
           <button
             className="w-40 bg-[#191919] py-2 px-3 rounded-lg flex items-center justify-between gap-x-2 border border-white"
             onClick={toggleDropdown}
@@ -30,7 +30,7 @@ export const ThemeSelector = () => {
           {showDropdown && (
             <div className="absolute w-40 top-20 mt-2">
               <ul className="border w-full rounded-lg p-2">
-                {THEMES.map((theme) => (
+                {CODE_COLORS.map((theme) => (
                   <li
                     key={theme}
                     className="text-white/50 text-lg px-2 py-1 cursor-pointer hover:bg-[#191919] hover:text-white"

@@ -1,7 +1,6 @@
-import { Navbar } from "@/components/Navbar";
-import { LanguageSelector } from "@/components/common/LanguageSelector";
-import { MaxWidthWrapper } from "@/components/MaxWidthWrapper";
-import { ThemeSelector } from "@/components/common/ThemeSelector";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { MaxWidthWrapper } from "@/components/common/MaxWidthWrapper";
+import { Navbar } from "@/components/common/Navbar/Navbar";
 
 export default function Home() {
   return (
@@ -11,7 +10,7 @@ export default function Home() {
         <MaxWidthWrapper>
           <div className="bg-[#191919] rounded-lg w-full p-5 flex items-center gap-x-5">
             <LanguageSelector />
-            <ThemeSelector />
+            {/* <CodeColorsSelector /> */}
           </div>
         </MaxWidthWrapper>
       </section>

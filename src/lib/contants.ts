@@ -5,4 +5,4 @@ export const LANGUAGES = [
   'Java'
 ];
 
-export const THEMES = ["monokai", "twilight", "terminal"];
+export const CODE_COLORS = ["monokai", "twilight", "terminal"];
