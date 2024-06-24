@@ -1,4 +1,6 @@
+import { CodeColorSelector } from "@/components/CodeColorSelector";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { ThemeSelector } from "@/components/ThemeSelector";
 import { MaxWidthWrapper } from "@/components/common/MaxWidthWrapper";
 import { Navbar } from "@/components/common/Navbar/Navbar";
 
@@ -8,9 +10,10 @@ export default function Home() {
       <Navbar />
       <section className="h-full">
         <MaxWidthWrapper>
-          <div className="bg-[#191919] rounded-lg w-full p-5 flex items-center gap-x-5">
+          <div className="bg-[#191919] rounded-lg w-full p-5 flex items-center gap-x-8">
             <LanguageSelector />
-            {/* <CodeColorsSelector /> */}
+            <CodeColorSelector />
+            <ThemeSelector />
           </div>
         </MaxWidthWrapper>
       </section>

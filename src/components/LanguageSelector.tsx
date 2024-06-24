@@ -1,6 +1,8 @@
 "use client";
 
 import { LANGUAGES } from "@/lib/contants";
+import { setLanguage } from "@/store/features/editorSlice";
+import { RootState } from "@/store/store";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
@@ -8,10 +10,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const LanguageSelector = () => {
 
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(
-    LANGUAGES[0]
-  );
+  const dispatch = useDispatch();
+  const selectedLanguage = useSelector((state: RootState) => state.editorReducer.language);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+
+  const handleLanguageChange = (language: string) => {
+    dispatch(setLanguage(language));
+    setShowDropdown(false);
+  }
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -30,21 +36,18 @@ export const LanguageSelector = () => {
             <ChevronDown className="w-6 h-6 text-white" />
           </button>
           {showDropdown && (
-            <div className="absolute w-40 top-20 mt-2">
-              <ul className="border w-full rounded-lg p-2">
+            <div className="bg-[#191919] absolute w-40 top-20 mt-2">
+              <div className="border w-full rounded-lg p-2 flex flex-col items-start justify-start">
                 {LANGUAGES.map((language) => (
-                  <li
+                  <button
                     key={language}
                     className="text-white/50 text-lg px-2 py-1 cursor-pointer hover:bg-[#191919] hover:text-white"
-                    onClick={() => {
-                      setSelectedLanguage(language);
-                      setShowDropdown(false);
-                    }}
+                    onClick={() => handleLanguageChange(language)}
                   >
                     {language}
-                  </li>
+                  </button>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
         </div>

@@ -2,15 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface EditorState {
   language: string;
-  code: string;
+  codecolor: string;
   theme: string;
   padding: number;
 }
 
 const initialState: EditorState = {
-  language: 'javascript',
-  code: '',
-  theme: 'light',
+  language: 'Javascript',
+  codecolor: 'Monokai',
+  theme: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
   padding: 16,
 };
 
@@ -21,8 +21,8 @@ const editorSlice = createSlice({
     setLanguage: (state, action) => {
       state.language = action.payload;
     },
-    setCode: (state, action) => {
-      state.code = action.payload;
+    setCodeColor: (state, action) => {
+      state.codecolor = action.payload;
     },
     setTheme: (state, action) => {
       state.theme = action.payload;
@@ -35,7 +35,7 @@ const editorSlice = createSlice({
 
 export const {
   setLanguage,
-  setCode,
+  setCodeColor,
   setTheme,
   setPadding,
 } = editorSlice.actions;
