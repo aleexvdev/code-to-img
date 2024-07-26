@@ -19,3 +19,18 @@ export const THEME_COLORS = [
   "linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))",
   "linear-gradient(270deg,#514a9d,#24c6dc)",
 ];
+
+export const PADDINGS = [
+  "0",
+  "16",
+  "32",
+  "64",
+  "128",
+];
+
+export const RADIUS = [
+  "0",
+  "8",
+  "16",
+  "24"
+];

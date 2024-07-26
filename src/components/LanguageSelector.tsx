@@ -29,7 +29,7 @@ export const LanguageSelector = () => {
         <div className="relative">
           <p className="text-white text-lg text-left mb-2">Language</p>
           <button
-            className="w-40 bg-[#191919] py-2 px-3 rounded-lg flex items-center justify-between gap-x-2 border border-white"
+            className="w-40 bg-[#191919] py-2 px-3 rounded-lg flex items-center justify-between gap-x-2 border border-white/60"
             onClick={toggleDropdown}
           >
             <span className="text-base text-white">{selectedLanguage}</span>
@@ -37,7 +37,7 @@ export const LanguageSelector = () => {
           </button>
           {showDropdown && (
             <div className="bg-[#191919] absolute w-40 top-20 mt-2">
-              <div className="border w-full rounded-lg p-2 flex flex-col items-start justify-start">
+              <div className="border w-full rounded-lg p-2 flex flex-col items-start justify-start border-white/60">
                 {LANGUAGES.map((language) => (
                   <button
                     key={language}

@@ -4,14 +4,16 @@ interface EditorState {
   language: string;
   codecolor: string;
   theme: string;
-  padding: number;
+  padding: string;
+  radius: string;
 }
 
 const initialState: EditorState = {
   language: 'Javascript',
   codecolor: 'Monokai',
   theme: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
-  padding: 16,
+  padding: "16",
+  radius: "8",
 };
 
 const editorSlice = createSlice({
@@ -30,6 +32,9 @@ const editorSlice = createSlice({
     setPadding: (state, action) => {
       state.padding = action.payload;
     },
+    setRadius: (state, action) => {
+      state.radius = action.payload;
+    },
   }
 });
 
@@ -38,6 +43,7 @@ export const {
   setCodeColor,
   setTheme,
   setPadding,
+  setRadius,
 } = editorSlice.actions;
 
 export default editorSlice.reducer;
