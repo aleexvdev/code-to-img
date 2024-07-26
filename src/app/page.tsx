@@ -1,9 +1,3 @@
-import { CodeColorSelector } from "@/components/CodeColorSelector";
-import { LanguageSelector } from "@/components/LanguageSelector";
-import { PaddingSelector } from "@/components/PaddingSelector";
-import { RadiusSelector } from "@/components/RadiusSelector";
-import { ThemeSelector } from "@/components/ThemeSelector";
-import { MaxWidthWrapper } from "@/components/common/MaxWidthWrapper";
 import { Navbar } from "@/components/common/Navbar/Navbar";
 import { Sidebar } from "@/components/common/Sidebar/Sidebar";
 
