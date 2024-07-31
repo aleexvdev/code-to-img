@@ -7,7 +7,9 @@ export const LANGUAGES = [
 
 export const CODE_COLORS = ["Monokai", "Twilight", "Terminal"];
 
-export const THEME_COLORS = [
+export const THEMES = ["Monokai", "Twilight", "Terminal"];
+
+export const BACKGROUNDS = [
   "linear-gradient(354deg,#ff75b5,#ffb86c)",
   "linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))",
   "linear-gradient(90deg,#93f9b9,#1d976c)",

@@ -3,17 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 interface EditorState {
   language: string;
   codecolor: string;
-  theme: string;
+  background: string;
   padding: string;
   radius: string;
+  theme: string;
+  linenumber: boolean;
+  linestart: number;
 }
 
 const initialState: EditorState = {
   language: 'Javascript',
   codecolor: 'Monokai',
-  theme: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
+  background: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
   padding: "16",
   radius: "8",
+  theme: "Monokai",
+  linenumber: false,
+  linestart: 0,
 };
 
 const editorSlice = createSlice({
@@ -26,8 +32,8 @@ const editorSlice = createSlice({
     setCodeColor: (state, action) => {
       state.codecolor = action.payload;
     },
-    setTheme: (state, action) => {
-      state.theme = action.payload;
+    setBackground: (state, action) => {
+      state.background = action.payload;
     },
     setPadding: (state, action) => {
       state.padding = action.payload;
@@ -35,15 +41,27 @@ const editorSlice = createSlice({
     setRadius: (state, action) => {
       state.radius = action.payload;
     },
+    setTheme: (state, action) => {
+      state.theme = action.payload;
+    },
+    setLineNumber: (state, action) => {
+      state.linenumber = action.payload;
+    },
+    setLineStart: (state, action) => {
+      state.linestart = action.payload;
+    },
   }
 });
 
 export const {
   setLanguage,
   setCodeColor,
-  setTheme,
+  setBackground,
   setPadding,
   setRadius,
+  setTheme,
+  setLineNumber,
+  setLineStart,
 } = editorSlice.actions;
 
 export default editorSlice.reducer;

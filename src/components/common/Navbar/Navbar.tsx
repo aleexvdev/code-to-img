@@ -16,12 +16,12 @@ export const Navbar = () => {
           <div className="flex items-center justify-end gap-10">
             <div className="font-semibold text-sm">
               <button className="flex items-center gap-2 rounded-lg py-2 px-3 hover:bg-[#404040] text-white">
-                <Info size={20} /> Info
+                <Info size={18} /> Keyboard shortcuts
               </button>
             </div>
             <div className="font-semibold text-sm">
               <button className="flex items-center gap-3 bg-blue-600 rounded-lg py-2 px-3 text-white">
-                <Download />
+                <Download size={18} />
                 Export Image
               </button>
             </div>

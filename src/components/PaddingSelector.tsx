@@ -40,20 +40,16 @@ export const PaddingSelector = () => {
             {showDropdown && (
               <ul className="absolute top-10 right-0 z-10 w-full bg-[#232323] rounded-md p-2 shadow-lg">
                 {PADDINGS.map((padding) => (
-                  <li
+                  <button
                     key={padding}
-                    className="px-0 py-0 hover:bg-[#404040] rounded-md"
+                    onClick={() => handlePaddingChange(padding)}
+                    className="w-full text-sm px-2 py-1 text-white flex items-center justify-between hover:bg-[#404040] rounded-md"
                   >
-                    <button
-                      onClick={() => handlePaddingChange(padding)}
-                      className="w-full text-sm px-2 py-1 text-white flex items-center justify-between"
-                    >
-                      {padding}
-                      {padding === selectedPadding && (
-                        <Check size={18} className="mr-2" />
-                      )}
-                    </button>
-                  </li>
+                    {padding}
+                    {padding === selectedPadding && (
+                      <Check size={18} className="mr-2" />
+                    )}
+                  </button>
                 ))}
               </ul>
             )}
@@ -62,30 +58,4 @@ export const PaddingSelector = () => {
       </div>
     </div>
   );
-
-  /* return (
-    <OutsideClickHandler onOutsideClick={() => setShowDropdown(false)}>
-      <div className="w-max">
-        <div className="relative">
-          <p className="text-white text-lg text-left mb-2">Padding</p>
-
-          <div className='w-full flex gap-3'>
-            {
-              PADDINGS.map((padding) => (
-                <button
-                  key={padding}
-                  className={`rounded-md mr-2 text-lg px-2 py-1 cursor-pointer hover:bg-[#191919] hover:text-white ${
-                    padding === selectedPadding? 'bg-[#404040] text-white' : 'text-white/30'
-                  }`}
-                  onClick={() => handlePaddingChange(padding)}
-                >
-                  {padding}
-                </button>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </OutsideClickHandler>
-  ) */
-};
+}
