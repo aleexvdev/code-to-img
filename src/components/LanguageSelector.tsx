@@ -38,11 +38,11 @@ export const LanguageSelector = () => {
               <ChevronsUpDown size={18} />
             </button>
             {showDropdown && (
-              <div className="absolute top-10 right-0 z-10 w-full bg-[#232323] rounded-md p-2 shadow-lg">
+              <div className="absolute top-10 right-0 z-10 w-full bg-[#232323] rounded-md p-2 shadow-lg shadow-black">
                 {LANGUAGES.map((language) => (
                   <button
                     key={language}
-                    className="w-full text-sm px-2 py-1 text-white flex items-center justify-between hover:bg-[#404040] rounded-md"
+                    className="w-full text-sm p-1 text-white flex items-center justify-between hover:bg-[#404040] rounded-md"
                     onClick={() => handleLanguageChange(language)}
                   >
                     {language}
