@@ -1,3 +1,5 @@
+"use client";
+
 import { setLineNumber } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
 import React, { useState } from "react";

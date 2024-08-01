@@ -11,8 +11,11 @@ export const LineStartSelector = () => {
   const lineSelector = useSelector(
     (state: RootState) => state.editorReducer.linestart
   );
-  const handleLineStartChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setLineStart(e.target.value));
+  const handleLineStartChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.target;
+    if (parseInt(value) >= 1) {
+      dispatch(setLineStart(value));
+    }
   };
 
   return (
@@ -20,9 +23,9 @@ export const LineStartSelector = () => {
       <div className="flex w-full items-center justify-between">
         <p className="text-[#CCCCCC] text-xs text-left">Line start</p>
         <div className="w-40 text-[#CCCCCC]">
-          <div className="w-full flex items-center justify-between px-2 py-1 gap-2 bg-[#232323] rounded-lg">
+          <div className="w-full flex items-center justify-between px-2 py-2 gap-2 bg-[#232323] rounded-lg">
             <input 
-              className="w-full px-1 outline-none bg-[#232323]" 
+              className="w-full px-1 outline-none bg-[#232323] text-xs [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" 
               type="number" 
               name="" 
               id="" 

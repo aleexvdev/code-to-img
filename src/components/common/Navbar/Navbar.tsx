@@ -20,9 +20,9 @@ export const Navbar = () => {
               </button>
             </div>
             <div className="font-semibold text-sm">
-              <button className="flex items-center gap-3 bg-blue-600 rounded-lg py-2 px-3 text-white">
+              <button className="flex items-center gap-3 bg-blue-800 rounded-lg py-2 px-5 text-white hover:bg-blue-700">
                 <Download size={18} />
-                Export Image
+                Export
               </button>
             </div>
           </div>

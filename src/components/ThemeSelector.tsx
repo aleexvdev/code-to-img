@@ -1,3 +1,5 @@
+"use client";
+
 import { THEMES } from "@/lib/contants";
 import { setTheme } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
