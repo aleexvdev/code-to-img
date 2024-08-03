@@ -42,7 +42,7 @@ export const BackgroundSelector = () => {
               />
             </button>
             {showDropdown && (
-              <div className="absolute top-0 left-44 z-10 w-60 bg-[#212121] rounded-md p-2 shadow-xl shadow-black">
+              <div className="absolute top-0 left-44 z-10 w-60 bg-[#212121] rounded-md p-2 shadow-lg shadow-black">
                 <div className="p-2 w-full">
                   <div className="w-full flex items-center justify-between">
                     <p className="text-sm text-white">Background Color</p>

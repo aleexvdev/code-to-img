@@ -9,6 +9,7 @@ interface EditorState {
   theme: string;
   linenumber: boolean;
   linestart: number;
+  scale: string;
 }
 
 const initialState: EditorState = {
@@ -20,6 +21,7 @@ const initialState: EditorState = {
   theme: "Monokai",
   linenumber: false,
   linestart: 0,
+  scale: "1x",
 };
 
 const editorSlice = createSlice({
@@ -50,6 +52,9 @@ const editorSlice = createSlice({
     setLineStart: (state, action) => {
       state.linestart = action.payload;
     },
+    setScale: (state, action) => {
+      state.scale = action.payload;
+    },
   }
 });
 
@@ -62,6 +67,7 @@ export const {
   setTheme,
   setLineNumber,
   setLineStart,
+  setScale,
 } = editorSlice.actions;
 
 export default editorSlice.reducer;

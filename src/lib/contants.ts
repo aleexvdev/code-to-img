@@ -29,8 +29,8 @@ export const BACKGROUNDS = [
 ];
 
 export const COLORS = [
+  "#FFFFFF00",
   "#000000",
-  "#1a1a1a",
   "#383c4a",
   "#999999",
   "#FFFFFF",
@@ -60,4 +60,10 @@ export const RADIUS = [
   "8",
   "16",
   "24"
+];
+
+export const SCALES = [
+  "1x",
+  "2x",
+  "3x",
 ];
