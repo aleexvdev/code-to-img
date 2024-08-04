@@ -10,11 +10,10 @@ export default function Home() {
         <div className="w-72 h-min-screen">
           <Sidebar />
         </div>
-        <div className="w-full">
+        <div className="w-full mr-4 mb-4">
           <CodeEditor />
         </div>
       </div>
     </div>
   );
 }
-// bg-[#121212]

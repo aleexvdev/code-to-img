@@ -10,6 +10,9 @@ interface EditorState {
   linenumber: boolean;
   linestart: number;
   scale: string;
+  opacity: number;
+  width: number;
+  height: number;
 }
 
 const initialState: EditorState = {
@@ -22,6 +25,9 @@ const initialState: EditorState = {
   linenumber: false,
   linestart: 0,
   scale: "1x",
+  opacity: 100,
+  width: 800,
+  height: 600,
 };
 
 const editorSlice = createSlice({
@@ -55,6 +61,15 @@ const editorSlice = createSlice({
     setScale: (state, action) => {
       state.scale = action.payload;
     },
+    setOpacity: (state, action) => {
+      state.opacity = action.payload;
+    },
+    setWidth: (state, action) => {
+      state.width = action.payload;
+    },
+    setHeight: (state, action) => {
+      state.height = action.payload;
+    },
   }
 });
 
@@ -68,6 +83,9 @@ export const {
   setLineNumber,
   setLineStart,
   setScale,
+  setOpacity,
+  setWidth,
+  setHeight,
 } = editorSlice.actions;
 
 export default editorSlice.reducer;

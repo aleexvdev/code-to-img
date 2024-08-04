@@ -9,6 +9,7 @@ import { LineNumberSelector } from '@/components/LineNumberSelector';
 import { LineStartSelector } from '@/components/LineStartSelector';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
+import { OpacitySelector } from '@/components/OpacitySelector';
 
 export const Sidebar = () => {
 
@@ -25,6 +26,7 @@ export const Sidebar = () => {
             <PaddingSelector />
             <RadiusSelector />
             <BackgroundSelector />
+            <OpacitySelector />
           </div>
         </div>
         <div className='w-full'>
