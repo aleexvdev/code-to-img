@@ -69,5 +69,9 @@ export const SCALES = [
 ];
 
 export const HEADERS_WSTYLES = [
-  1,2,3,4
+  "None",
+  "Windows",
+  "macOS - Color",
+  "macOS - Gray",
+  "macOS - Outline"
 ];

@@ -1,29 +1,28 @@
 "use client";
 
-import { setHeaderWindowStyle } from "@/store/features/editorSlice";
+import { setHeaderWindowControls } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
 import { Minus, Square, X } from "lucide-react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const HeaderWindow = () => {
+export const CardWindowControls = () => {
   const dispatch = useDispatch();
-  const headerStyle = useSelector(
-    (state: RootState) => state.editorReducer.headerWindowStyle
+  const HeaderWindowStyle = useSelector(
+    (state: RootState) => state.editorReducer.headerWindowControls
   );
   const showAccentValue = useSelector(
     (state: RootState) => state.editorReducer.showAccent
   );
 
   const handleHeaderStyleChange = () => {
-    dispatch(setHeaderWindowStyle(1));
+    dispatch(setHeaderWindowControls("Windows"));
   };
 
-  // console.log(showAccentValue)
   return (
     <div
       className={`w-full p-2 rounded-xl bg-[#303030] border ${
-        headerStyle === 1 ? "border-blue-300" : "border-transparent"
+        HeaderWindowStyle === "Windows" ? "border-blue-300" : "border-transparent"
       } mb-2`}
       onClick={handleHeaderStyleChange}
     >
@@ -41,7 +40,7 @@ export const HeaderWindow = () => {
   );
 };
 
-export const HeaderWindowMiniCard = () => {
+export const MiniCardWindow = () => {
   return (
     <div className="w-full py-1 rounded-md bg-[#181818] flex items-center justify-between px-2 shadow-md shadow-black">
       <div className="max-w-20 bg-[#303030] rounded-md px-2 py-0">

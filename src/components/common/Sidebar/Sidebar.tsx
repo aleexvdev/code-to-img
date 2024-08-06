@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronsUpDown } from "lucide-react";
 import React from "react";
 import { MaxContentItem } from "../MaxContentItem";
 import { PaddingSelector } from "@/components/Frame/PaddingSelector";
@@ -18,7 +17,7 @@ import { LineNumberSelector } from "@/components/Editor/LineNumberSelector";
 import { LineStartSelector } from "@/components/Editor/LineStartSelector";
 import { HeaderSelector } from "@/components/Window/HeaderSelector";
 import { WatermarkSelector } from "@/components/Window/WatermarkSelector";
-import { HeaderWindowStyle } from "@/components/Window/HeaderWindowStyle";
+import { HeaderWindowControls } from "@/components/Window/HeaderWindowControls";
 
 export const Sidebar = () => {
   const stateLineNumber = useSelector(
@@ -48,7 +47,7 @@ export const Sidebar = () => {
         <Separator />
         <MaxContentItem title="Window">
           <HeaderSelector />
-          {stateHeaderWindow && <HeaderWindowStyle />}
+          {stateHeaderWindow && <HeaderWindowControls />}
           <WatermarkSelector />
         </MaxContentItem>
       </div>

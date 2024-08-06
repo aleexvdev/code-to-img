@@ -5,31 +5,16 @@ import { Bolt, Check, X } from "lucide-react";
 import React, { useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  HeaderWindow,
-  HeaderWindowMiniCard,
-} from "./HeadersWStyles.tsx/HeaderWindow";
-import {
-  HeaderMacStyleV1,
-  HeaderMacStyleV1MiniCard,
-} from "./HeadersWStyles.tsx/HeaderMacStyleV1";
-import {
-  HeaderMacStyleV2,
-  HeaderMacStyleV2MiniCard,
-} from "./HeadersWStyles.tsx/HeaderMacStyleV2";
-import {
-  HeaderMacStyleV3,
-  HeaderMacStyleV3MiniCard,
-} from "./HeadersWStyles.tsx/HeaderMacStyleV3";
 import { setShowAccent } from "@/store/features/editorSlice";
+import { CardMacOSColorControls, CardMacOSGrayControls, CardMacOSOutlineControls, CardWindowControls, MiniCardMacOSColor, MiniCardMacOSGray, MiniCardMacOSOutline, MiniCardWindow } from "./Cards";
 
-export const HeaderWindowStyle = () => {
+export const HeaderWindowControls = () => {
   const dispatch = useDispatch();
   const showAccentValue = useSelector(
     (state: RootState) => state.editorReducer.showAccent
   );
   const headerStyle = useSelector(
-    (state: RootState) => state.editorReducer.headerWindowStyle
+    (state: RootState) => state.editorReducer.headerWindowControls
   );
 
   const [showPopPup, setShowPopPup] = useState<boolean>(false);
@@ -44,14 +29,14 @@ export const HeaderWindowStyle = () => {
 
   const selectedHeaderStyle = () => {
     switch (headerStyle) {
-      case 2:
-        return <HeaderMacStyleV1MiniCard />;
-      case 3:
-        return <HeaderMacStyleV2MiniCard />;
-      case 4:
-        return <HeaderMacStyleV3MiniCard />;
+      case "macOS - Color":
+        return <MiniCardMacOSColor />;
+      case "macOS - Gray":
+        return <MiniCardMacOSGray />;
+      case "macOS - Outline":
+        return <MiniCardMacOSOutline />;
       default:
-        return <HeaderWindowMiniCard />;
+        return <MiniCardWindow />;
     }
   };
 
@@ -95,10 +80,10 @@ export const HeaderWindowStyle = () => {
                 </button>
               </div>
               <div className="mt-4 mb-2 flex flex-col items-center justify-center text-white bg-[#212121] rounded-lg p-1">
-                <HeaderWindow />
-                <HeaderMacStyleV1 />
-                <HeaderMacStyleV2 />
-                <HeaderMacStyleV3 />
+                <CardWindowControls />
+                <CardMacOSColorControls />
+                <CardMacOSGrayControls />
+                <CardMacOSOutlineControls />
                 <div className="mt-5 w-full">
                   <div className="w-full flex items-center relative">
                     <label className="inline-flex items-center">

@@ -16,7 +16,7 @@ interface EditorState {
   border: boolean;
   headerWindow: boolean;
   watermark: boolean;
-  headerWindowStyle: number;
+  headerWindowControls: string;
   showAccent: boolean;
 }
 
@@ -34,9 +34,9 @@ const initialState: EditorState = {
   width: 800,
   height: 600,
   border: false,
-  headerWindow: true,
+  headerWindow: false,
+  headerWindowControls: "None",
   watermark: false,
-  headerWindowStyle: 1,
   showAccent: false,
 };
 
@@ -89,8 +89,8 @@ const editorSlice = createSlice({
     setWatermark: (state, action) => {
       state.watermark = action.payload;
     },
-    setHeaderWindowStyle: (state, action) => {
-      state.headerWindowStyle = action.payload;
+    setHeaderWindowControls: (state, action) => {
+      state.headerWindowControls = action.payload;
     },
     setShowAccent: (state, action) => {
       state.showAccent = action.payload;
@@ -114,7 +114,7 @@ export const {
   setBorder,
   setHeaderWindow,
   setWatermark,
-  setHeaderWindowStyle,
+  setHeaderWindowControls,
   setShowAccent,
 } = editorSlice.actions;
 
