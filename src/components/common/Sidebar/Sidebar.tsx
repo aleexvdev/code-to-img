@@ -18,6 +18,7 @@ import { LineStartSelector } from "@/components/Editor/LineStartSelector";
 import { HeaderSelector } from "@/components/Window/HeaderSelector";
 import { WatermarkSelector } from "@/components/Window/WatermarkSelector";
 import { HeaderWindowControls } from "@/components/Window/HeaderWindowControls";
+import { BackgroundWindow } from "@/components/Window/BackgroundWindow";
 
 export const Sidebar = () => {
   const stateLineNumber = useSelector(
@@ -28,7 +29,7 @@ export const Sidebar = () => {
   );
 
   return (
-    <div className="h-full max-h-full w-[280px] bg-[#121212] overflow-y-auto overflow-x-hidden flex-shrink-0 custom-scrollbar">
+    <div className="h-full max-h-full w-[280px] bg-[#181818] overflow-y-auto overflow-x-hidden flex-shrink-0 custom-scrollbar">
       <div className="ml-4 mb-5">
         <MaxContentItem title="Frame">
           <PaddingSelector />
@@ -46,6 +47,7 @@ export const Sidebar = () => {
         </MaxContentItem>
         <Separator />
         <MaxContentItem title="Window">
+          <BackgroundWindow />
           <HeaderSelector />
           {stateHeaderWindow && <HeaderWindowControls />}
           <WatermarkSelector />

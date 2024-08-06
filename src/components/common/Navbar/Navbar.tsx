@@ -27,7 +27,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="w-full px-4 h-20 bg-[#121212]">
+      <nav className="w-full px-4 h-20 bg-[#181818]">
         <MaxWidthWrapper>
           <div className="w-full h-full flex items-center justify-between">
             <div className="font-semibold text-2xl">
