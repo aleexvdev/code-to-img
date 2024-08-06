@@ -3,65 +3,66 @@
 import { RootState } from "@/store/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { CardMacOSColorMain } from "../Window/Cards/CardMacOSColorControls";
+import { CardWindowMain } from "../Window/Cards/CardWindowControls";
+import { CardMacOSGrayMain } from "../Window/Cards/CardMacOSGrayControls";
+import { CardMacOSOutlineMain } from "../Window/Cards/CardMacOSOutlineControls";
+
+const windowControls = (value: string) => {
+  switch (value) {
+    case "macOS - Color":
+      return <CardMacOSColorMain />;
+    case "macOS - Gray":
+      return <CardMacOSGrayMain />;
+    case "macOS - Outline":
+      return <CardMacOSOutlineMain />;
+    default:
+      return <CardWindowMain />;
+  }
+};
 
 export const CodeEditor = () => {
   // const dispatch = useDispatch();
   const editorState = useSelector((state: RootState) => state.editorReducer);
 
   return (
-    <div className="relative w-full h-full bg-[#0D0D0D] flex items-center justify-center rounded-tl-3xl p-5 ml-3">
-      <div
-        className="absolute w-full h-full text-white px-3 py-5 z-20"
-        style={{
-          backgroundImage:
-            "linear-gradient(45deg, #252525 25%, transparent 0), linear-gradient(-45deg, #252525 25%, transparent 0), linear-gradient(45deg, transparent 75%, #252525 0), linear-gradient(-45deg, transparent 75%, #252525 0)",
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0,0 10px,10px -10px,-10px 0",
-          width: editorState.width + "px",
-          height: editorState.height + "px",
-          borderRadius: editorState.radius + "px",
-        }}
-      />
-      <div
-        className="absolute w-full h-full z-30"
-        style={{
-          background: editorState.background,
-          borderRadius: editorState.radius + "px",
-          opacity: editorState.opacity + "%",
-          padding: editorState.padding + "px",
-          width: editorState.width + "px",
-          height: editorState.height + "px",
-        }}
-      />
-      <div
-        className="absolute w-full h-full flex flex-col rounded-lg bg-transparent shadow-md shadow-black p-10 z-40"
-        style={{
-          width: editorState.width + "px",
-          height: editorState.height + "px",
-          padding: editorState.padding + "px",
-        }}
-      >
+    <div className="relative w-full h-full polka p-32">
+      <div className="w-full h-full flex items-center justify-center">
         <div
-          className="w-full h-full rounded-xl "
+          className="min-w-full h-full"
           style={{
-            background: "rgba(16, 15, 20, 0.9)",
+            backgroundImage:
+              "linear-gradient(45deg, #252525 25%, transparent 0), linear-gradient(-45deg, #252525 25%, transparent 0), linear-gradient(45deg, transparent 75%, #252525 0), linear-gradient(-45deg, transparent 75%, #252525 0)",
+            backgroundSize: "20px 20px",
+            backgroundPosition: "0 0,0 10px,10px -10px,-10px 0",
           }}
         >
-          <div className="w-full flex items-center px-4 py-3 rounded-t-xl">
-            <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-              <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-            </div>
-            <div className="w-full flex items-center justify-center text-center mr-12">
-              <input
-                type="text"
-                value="Title"
-                className="bg-transparent text-gray-200 text-center min-w-20"
-              />
+          <div
+            className="min-w-full h-full p-8 relative"
+            style={{
+              width: editorState.width + "px",
+            }}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full"
+              style={{
+                background: editorState.background,
+                opacity: editorState.opacity + "%",
+              }}
+            />
+            <div
+              className="relative bg-[#1E1E1E] w-full h-full"
+              style={{
+                borderRadius: editorState.radius + "px",
+              }}
+            >
+              {editorState.headerWindow &&
+                windowControls(editorState.headerWindowControls)}
+              <div className="text-white px-5 py-3">
+                
+              </div>
             </div>
           </div>
-          <div className="w-full h-full text-white px-5 py-2">hola mundo!!</div>
         </div>
       </div>
     </div>

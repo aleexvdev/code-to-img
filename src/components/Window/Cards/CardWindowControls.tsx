@@ -22,7 +22,9 @@ export const CardWindowControls = () => {
   return (
     <div
       className={`w-full p-2 rounded-xl bg-[#303030] border ${
-        HeaderWindowStyle === "Windows" ? "border-blue-300" : "border-transparent"
+        HeaderWindowStyle === "Windows"
+          ? "border-blue-300"
+          : "border-transparent"
       } mb-2`}
       onClick={handleHeaderStyleChange}
     >
@@ -35,6 +37,33 @@ export const CardWindowControls = () => {
           <Square size={11} />
           <X size={13} />
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const CardWindowMain = () => {
+  const styles = useSelector((state: RootState) => state.editorReducer);
+
+  return (
+    <div
+      className="w-full py-3 bg-[#181818] flex items-center justify-start px-5"
+      style={{
+        borderTopLeftRadius: styles.radius + "px",
+        borderTopRightRadius: styles.radius + "px",
+      }}
+    >
+      <div className="w-max min-w-20 bg-[#303030] rounded-md px-2 py-0.5">
+        <input
+          type="text"
+          className="outline-none w-full h-full text-sm py-1.5 text-[#CCCCCC] bg-[#303030] rounded-lg"
+          value={"Untitled"}
+        />
+      </div>
+      <div className="w-full flex items-center justify-end gap-x-2">
+        <Minus size={15} color="white" />
+        <Square size={15} color="white" />
+        <X size={15} color="white" />
       </div>
     </div>
   );

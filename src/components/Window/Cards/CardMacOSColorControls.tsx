@@ -18,7 +18,9 @@ export const CardMacOSColorControls = () => {
   return (
     <div
       className={`w-full p-2 rounded-xl bg-[#303030] border ${
-        HeaderWindowStyle === "macOS - Color" ? "border-blue-300" : "border-transparent"
+        HeaderWindowStyle === "macOS - Color"
+          ? "border-blue-300"
+          : "border-transparent"
       } mb-2`}
       onClick={handleHeaderStyleChange}
     >
@@ -31,6 +33,33 @@ export const CardMacOSColorControls = () => {
         <div className="max-w-20 bg-[#303030] rounded-md px-2 py-0 ml-5 hover:bg-[#454545]">
           <span className="text-xs text-[#CCCCCC] select-none">Untitled</span>
         </div>
+      </div>
+    </div>
+  );
+};
+
+export const CardMacOSColorMain = () => {
+  const styles = useSelector((state: RootState) => state.editorReducer);
+
+  return (
+    <div
+      className="w-full py-3 bg-[#181818] flex items-center justify-start px-5"
+      style={{
+        borderTopLeftRadius: styles.radius + "px",
+        borderTopRightRadius: styles.radius + "px",
+      }}
+    >
+      <div className="flex items-center space-x-2">
+        <span className="w-4 h-4 bg-red-500 rounded-full"></span>
+        <span className="w-4 h-4 bg-yellow-500 rounded-full"></span>
+        <span className="w-4 h-4 bg-green-500 rounded-full"></span>
+      </div>
+      <div className="w-max min-w-20 bg-[#303030] rounded-md px-2 py-0.5 ml-5">
+        <input
+          type="text"
+          className="outline-none w-full h-full text-sm py-1.5 text-[#CCCCCC] bg-[#303030] rounded-lg"
+          value={"Untitled"}
+        />
       </div>
     </div>
   );

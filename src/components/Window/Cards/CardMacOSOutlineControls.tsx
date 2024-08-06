@@ -35,6 +35,33 @@ export const CardMacOSOutlineControls = () => {
   );
 };
 
+export const CardMacOSOutlineMain = () => {
+  const styles = useSelector((state: RootState) => state.editorReducer);
+
+  return (
+    <div
+      className="w-full py-3 bg-[#181818] flex items-center justify-start px-5"
+      style={{
+        borderTopLeftRadius: styles.radius + "px",
+        borderTopRightRadius: styles.radius + "px",
+      }}
+    >
+      <div className="flex items-center space-x-2">
+          <span className="w-4 h-4 bg-transparent rounded-full border-2 border-red-500"></span>
+          <span className="w-4 h-4 bg-transparent rounded-full border-2 border-yellow-500"></span>
+          <span className="w-4 h-4 bg-transparent rounded-full border-2 border-green-500"></span>
+      </div>
+      <div className="w-max min-w-20 bg-[#303030] rounded-md px-2 py-0.5 ml-5">
+        <input
+          type="text"
+          className="outline-none w-full h-full text-sm py-1.5 text-[#CCCCCC] bg-[#303030] rounded-lg"
+          value={"Untitled"}
+        />
+      </div>
+    </div>
+  );
+};
+
 export const MiniCardMacOSOutline = () => {
   return (
     <div className="w-full py-1 rounded-md bg-[#181818] flex items-center justify-start px-2 shadow-md shadow-black">

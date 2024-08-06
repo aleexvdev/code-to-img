@@ -53,4 +53,11 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
+
+}
+
+.polka {
+  background-image: radial-gradient(#333333 0.7px, #181818 1px);
+  background-size: 14px 14px;
+  background-position: center;
 }

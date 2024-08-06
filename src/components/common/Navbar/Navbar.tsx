@@ -32,8 +32,7 @@ export const Navbar = () => {
           <div className="w-full h-full flex items-center justify-between">
             <div className="font-semibold text-2xl">
               <Link href="/" className="text-white">
-                Code<span className="text-blue-400">To</span>
-                <span className="text-blue-500">Image</span>
+                Co<span className="text-blue-400">deSh</span><span className="text-blue-500">ot</span>
               </Link>
             </div>
             <OutsideClickHandler

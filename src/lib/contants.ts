@@ -29,11 +29,11 @@ export const BACKGROUNDS = [
 ];
 
 export const COLORS = [
-  "#FFFFFF00",
+  "#FFFFFF",
   "#000000",
   "#383c4a",
   "#999999",
-  "#FFFFFF",
+  "#9F0500",
   "#da4d4d",
   "#fdad5d",
   "#e3db2a",
