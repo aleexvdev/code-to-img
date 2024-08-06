@@ -55,13 +55,21 @@ export const ThemeSelector = () => {
                 {THEMES.map((theme) => (
                   <button
                     key={theme}
-                    className="w-full text-sm p-1 text-white flex items-center justify-between hover:bg-[#404040] rounded-md"
+                    className="flex items-center w-full p-0.5 text-[#CCCCCC]/50 hover:text-[#CCCCCC]"
                     onClick={() => handleThemeChange(theme)}
                   >
-                    {theme}
-                    {theme === selectedTheme && (
-                      <Check size={18} className="mr-2" />
-                    )}
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      {theme === selectedTheme && (
+                        <Check size={14} color="white" />
+                      )}
+                    </div>
+                    <span
+                      className={`ml-2 text-sm ${
+                        theme === selectedTheme ? "text-[#CCCCCC]" : ""
+                      }`}
+                    >
+                      {theme}
+                    </span>
                   </button>
                 ))}
               </div>
