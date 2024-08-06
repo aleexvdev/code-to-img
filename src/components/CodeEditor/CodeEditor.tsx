@@ -9,7 +9,7 @@ export const CodeEditor = () => {
   const editorState = useSelector((state: RootState) => state.editorReducer);
 
   return (
-    <div className="relative w-full h-full bg-[#0F0F10] flex items-center justify-center rounded-3xl p-5 z-10">
+    <div className="relative w-full h-full bg-[#0F0F10] flex items-center justify-center rounded-lg p-5 ml-3">
       <div
         className="absolute w-full h-full text-white px-3 py-5 z-20"
         style={{
@@ -34,14 +34,14 @@ export const CodeEditor = () => {
         }}
       />
       <div
-        className="absolute w-full h-full flex flex-col rounded-lg bg-transparent shadow-md shadow-black p-10 z-50"
+        className="absolute w-full h-full flex flex-col rounded-lg bg-transparent shadow-md shadow-black p-10 z-40"
         style={{
           width: editorState.width + "px",
           height: editorState.height + "px",
           padding: editorState.padding + "px",
         }}
       >
-        <div className="w-full h-full rounded-xl bg-[#000000b2] ">
+        <div className="w-full h-full rounded-xl bg-[#000000b2]">
           <div className="w-full flex items-center px-4 py-3 rounded-t-xl">
             <div className="flex items-center space-x-2">
               <span className="w-3 h-3 bg-red-500 rounded-full"></span>

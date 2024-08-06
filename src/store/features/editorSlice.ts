@@ -13,10 +13,15 @@ interface EditorState {
   opacity: number;
   width: number;
   height: number;
+  border: boolean;
+  headerWindow: boolean;
+  watermark: boolean;
+  headerWindowStyle: number;
+  showAccent: boolean;
 }
 
 const initialState: EditorState = {
-  language: 'Javascript',
+  language: 'JavaScript',
   codecolor: 'Monokai',
   background: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
   padding: "16",
@@ -28,6 +33,11 @@ const initialState: EditorState = {
   opacity: 100,
   width: 800,
   height: 600,
+  border: false,
+  headerWindow: true,
+  watermark: false,
+  headerWindowStyle: 1,
+  showAccent: false,
 };
 
 const editorSlice = createSlice({
@@ -70,6 +80,21 @@ const editorSlice = createSlice({
     setHeight: (state, action) => {
       state.height = action.payload;
     },
+    setBorder: (state, action) => {
+      state.border = action.payload;
+    },
+    setHeaderWindow: (state, action) => {
+      state.headerWindow = action.payload;
+    },
+    setWatermark: (state, action) => {
+      state.watermark = action.payload;
+    },
+    setHeaderWindowStyle: (state, action) => {
+      state.headerWindowStyle = action.payload;
+    },
+    setShowAccent: (state, action) => {
+      state.showAccent = action.payload;
+    },
   }
 });
 
@@ -86,6 +111,11 @@ export const {
   setOpacity,
   setWidth,
   setHeight,
+  setBorder,
+  setHeaderWindow,
+  setWatermark,
+  setHeaderWindowStyle,
+  setShowAccent,
 } = editorSlice.actions;
 
 export default editorSlice.reducer;

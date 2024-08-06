@@ -67,3 +67,7 @@ export const SCALES = [
   "2x",
   "3x",
 ];
+
+export const HEADERS_WSTYLES = [
+  1,2,3,4
+];
