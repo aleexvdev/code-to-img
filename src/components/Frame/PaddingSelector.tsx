@@ -57,12 +57,22 @@ export const PaddingSelector = () => {
                     <button
                       key={padding}
                       onClick={() => handlePaddingChange(padding)}
-                      className="w-full text-sm p-1 text-white flex items-center justify-between hover:bg-[#404040] rounded-md"
+                      className="flex items-center w-full p-0.5 text-[#CCCCCC]/50 hover:text-[#CCCCCC]"
                     >
-                      {padding}
-                      {padding === selectedPadding && (
-                        <Check size={18} className="mr-2" />
-                      )}
+                      <div className="w-4 h-4 flex items-center justify-center">
+                        {padding === selectedPadding && (
+                          <Check size={14} color="white" />
+                        )}
+                      </div>
+                      <span
+                        className={`ml-2 text-sm ${
+                          padding === selectedPadding
+                            ? "text-[#CCCCCC]"
+                            : ""
+                        }`}
+                      >
+                        {padding}
+                      </span>
                     </button>
                   ))}
                 </ul>
@@ -74,3 +84,7 @@ export const PaddingSelector = () => {
     </div>
   );
 };
+/*
+                      {padding === selectedPadding && (
+                        <Check size={18} color="white" className="w-10 bg-black" />
+                      )} */
