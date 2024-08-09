@@ -1,6 +1,6 @@
 "use client";
 
-import { setHeaderWindowControls } from "@/store/features/editorSlice";
+import { setHeaderWindowControls, setTitleDocument } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
 import { Minus, Square, X } from "lucide-react";
 import React from "react";
@@ -43,21 +43,27 @@ export const CardWindowControls = () => {
 };
 
 export const CardWindowMain = () => {
-  const styles = useSelector((state: RootState) => state.editorReducer);
+  const dispatch = useDispatch();
+  const selector = useSelector((state: RootState) => state.editorReducer);
+
+  const handleTitleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setTitleDocument(parseInt(e.target.value)));
+  };
 
   return (
     <div
       className="w-full py-3 bg-[#181818] flex items-center justify-start px-5"
       style={{
-        borderTopLeftRadius: styles.radius + "px",
-        borderTopRightRadius: styles.radius + "px",
+        borderTopLeftRadius: selector.radius + "px",
+        borderTopRightRadius: selector.radius + "px",
       }}
     >
       <div className="w-max min-w-20 bg-[#303030] rounded-md px-2 py-0.5">
         <input
           type="text"
           className="outline-none w-full h-full text-sm py-1.5 text-[#CCCCCC] bg-[#303030] rounded-lg"
-          value={"Untitled"}
+          value={selector.titleDocument}
+          onChange={handleTitleDocumentChange}
         />
       </div>
       <div className="w-full flex items-center justify-end gap-x-2">

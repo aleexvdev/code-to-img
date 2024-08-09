@@ -34,8 +34,9 @@ export const LineStartSelector = () => {
             <input
               className="w-full px-1 outline-none bg-[#232323] text-xs [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               type="number"
-              name=""
-              id=""
+              name="lineStart"
+              id="lineStart"
+              min={1}
               value={lineSelector}
               onChange={handleLineStartChange}
             />

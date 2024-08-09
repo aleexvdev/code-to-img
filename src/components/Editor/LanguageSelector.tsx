@@ -47,12 +47,12 @@ export const LanguageSelector = () => {
               rounded-md h-full"
               onClick={toggleDropdown}
             >
-              <span className="text-[#CCCCCC] text-xs">{selectedLanguage}</span>
+              <span className="text-[#CCCCCC] text-xs capitalize">{selectedLanguage}</span>
               <ChevronsUpDown size={15} color="white" />
             </button>
             {showDropdown && (
               <div className="absolute min-w-max w-[150px] z-50 top-10">
-                <ul className="w-full bg-[#212121] rounded-md p-2 shadow-lg shadow-black overflow-auto z-50 flex flex-col gap-y-1 outline-none max-h-80">
+                <ul className="w-full bg-[#212121] rounded-md p-2 shadow-lg shadow-black overflow-auto z-50 flex flex-col gap-y-1 outline-none max-h-60">
                   {LANGUAGES.map((language) => (
                     <button
                       key={language}
@@ -65,7 +65,7 @@ export const LanguageSelector = () => {
                         )}
                       </div>
                       <span
-                        className={`ml-2 text-sm ${
+                        className={`ml-2 text-sm capitalize ${
                           language === selectedLanguage ? "text-[#CCCCCC]" : ""
                         }`}
                       >

@@ -1,5 +1,5 @@
+import { CodeEditorContent } from "@/components/CodeEditor/CodeEditorContent";
 import { Navbar } from "@/components/common/Navbar/Navbar";
-import { CodeEditor } from "@/components/CodeEditor/CodeEditor";
 import { Sidebar } from "@/components/common/Sidebar/Sidebar";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
       <Navbar />
       <div className="w-full flex min-h-0 h-full relative">
         <Sidebar />
-        <CodeEditor />
+        <CodeEditorContent />
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ export const WatermarkSelector = () => {
           <div className="w-full flex items-center justify-between px-1 py-1 gap-2 bg-[#232323] rounded-lg">
             <button
               className={`w-1/2 flex items-center justify-center text-xs py-1 font-semibold ${
-                !watermarkSelector ? "bg-[#404040]" : "bg-none"
+                watermarkSelector ? "bg-[#404040]" : "bg-none"
               } rounded-md`}
               onClick={handleWatermark}
             >
@@ -39,7 +39,7 @@ export const WatermarkSelector = () => {
             </button>
             <button
               className={`w-1/2 flex items-center justify-center text-xs py-1 font-semibold ${
-                watermarkSelector ? "bg-[#404040]" : "bg-none"
+                !watermarkSelector ? "bg-[#404040]" : "bg-none"
               } rounded-md`}
               onClick={handleWatermark}
             >

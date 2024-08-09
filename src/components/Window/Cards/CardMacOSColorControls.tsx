@@ -1,6 +1,6 @@
 "use client";
 
-import { setHeaderWindowControls } from "@/store/features/editorSlice";
+import { setHeaderWindowControls, setTitleDocument } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,14 +39,19 @@ export const CardMacOSColorControls = () => {
 };
 
 export const CardMacOSColorMain = () => {
-  const styles = useSelector((state: RootState) => state.editorReducer);
+  const dispatch = useDispatch();
+  const selector = useSelector((state: RootState) => state.editorReducer);
+
+  const handleTitleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setTitleDocument(parseInt(e.target.value)));
+  };
 
   return (
     <div
-      className="w-full py-3 bg-[#181818] flex items-center justify-start px-5"
+      className="w-full bg-[#181818] flex items-center justify-start px-5 py-3"
       style={{
-        borderTopLeftRadius: styles.radius + "px",
-        borderTopRightRadius: styles.radius + "px",
+        borderTopLeftRadius: selector.radius + "px",
+        borderTopRightRadius: selector.radius + "px",
       }}
     >
       <div className="flex items-center space-x-2">
@@ -58,7 +63,8 @@ export const CardMacOSColorMain = () => {
         <input
           type="text"
           className="outline-none w-full h-full text-sm py-1.5 text-[#CCCCCC] bg-[#303030] rounded-lg"
-          value={"Untitled"}
+          value={selector.titleDocument}
+          onChange={handleTitleDocumentChange}
         />
       </div>
     </div>

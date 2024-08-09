@@ -19,6 +19,7 @@ interface EditorState {
   headerWindowControls: string;
   showAccent: boolean;
   backgroundWindow: boolean;
+  titleDocument: string;
 }
 
 const initialState: EditorState = {
@@ -29,7 +30,7 @@ const initialState: EditorState = {
   radius: "8",
   theme: "Monokai",
   linenumber: false,
-  linestart: 0,
+  linestart: 1,
   scale: "1x",
   opacity: 100,
   width: 800,
@@ -40,6 +41,7 @@ const initialState: EditorState = {
   watermark: false,
   showAccent: false,
   backgroundWindow: true,
+  titleDocument: "Untitled"
 };
 
 const editorSlice = createSlice({
@@ -100,6 +102,9 @@ const editorSlice = createSlice({
     setBackgroundWindow: (state, action) => {
       state.backgroundWindow = action.payload;
     },
+    setTitleDocument: (state, action) => {
+      state.titleDocument = action.payload;
+    }
   }
 });
 
@@ -122,6 +127,7 @@ export const {
   setHeaderWindowControls,
   setShowAccent,
   setBackgroundWindow,
+  setTitleDocument
 } = editorSlice.actions;
 
 export default editorSlice.reducer;

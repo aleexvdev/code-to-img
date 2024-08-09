@@ -5,13 +5,23 @@ export const LANGUAGES = [
   'Java'
 ];
 
+export const as = [
+  {
+    name: 'JavaScript',
+    extension: ".js",
+    abbreviation: "JS",
+    icon: "javascript.svg"
+  },
+  
+]
+
 export const CODE_COLORS = ["Monokai", "Twilight", "Terminal"];
 
 export const THEMES = ["Monokai", "Twilight", "Terminal"];
 
 export const BACKGROUNDS = [
-  "linear-gradient(354deg,#ff75b5,#ffb86c)",
-  "linear-gradient(140deg, rgb(255, 207, 115), rgb(255, 122, 47))",
+  "linear-gradient(-45deg, #402662 0%, #8000FF 100%)",
+  "linear-gradient(to right top, #8155c6, #9e56cb, #ba55ce, #d654cf, #f053ce)",
   "linear-gradient(90deg,#93f9b9,#1d976c)",
   "linear-gradient(to right bottom, #ffcc99, #f6bd83, #edad6e, #e49e59, #da8f44)",
   "linear-gradient(337deg,#654ea3,#da98b4)",

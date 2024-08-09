@@ -23,7 +23,7 @@ export const ThemeSelector = () => {
     dispatch(setTheme(theme));
     setShowDropdown(false);
   };
-
+  
   return (
     <div
       className="relative grid w-full py-1 gap-x-2"
@@ -47,11 +47,11 @@ export const ThemeSelector = () => {
               rounded-md h-full"
               onClick={toggleDropdown}
             >
-              <span className="text-[#CCCCCC] text-xs">{selectedTheme}</span>
+              <span className="text-[#CCCCCC] text-xs capitalize">{selectedTheme}</span>
               <ChevronsUpDown size={15} color="white" />
             </button>
-            {showDropdown && (
-              <div className="absolute top-10 min-w-max w-[150px] z-50 bg-[#232323] rounded-md p-2 shadow-lg shadow-black">
+            {showDropdown && ( 
+              <div className="absolute top-10 min-w-max max-h-60 w-[150px] z-50 bg-[#232323] rounded-md p-2 shadow-lg shadow-black overflow-y-auto">
                 {THEMES.map((theme) => (
                   <button
                     key={theme}
@@ -64,7 +64,7 @@ export const ThemeSelector = () => {
                       )}
                     </div>
                     <span
-                      className={`ml-2 text-sm ${
+                      className={`ml-2 text-sm capitalize ${
                         theme === selectedTheme ? "text-[#CCCCCC]" : ""
                       }`}
                     >

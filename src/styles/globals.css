@@ -61,3 +61,7 @@
   background-size: 14px 14px;
   background-position: center;
 }
+
+.code-editor {
+  width: 100% !important;
+}
