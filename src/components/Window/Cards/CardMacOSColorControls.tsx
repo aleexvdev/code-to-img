@@ -5,6 +5,10 @@ import { RootState } from "@/store/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+interface CardMacOSColorProps {
+  background: string;
+}
+
 export const CardMacOSColorControls = () => {
   const dispatch = useDispatch();
   const HeaderWindowStyle = useSelector(
@@ -38,7 +42,7 @@ export const CardMacOSColorControls = () => {
   );
 };
 
-export const CardMacOSColorMain = () => {
+export const CardMacOSColorMain = ({ background }: CardMacOSColorProps) => {
   const dispatch = useDispatch();
   const selector = useSelector((state: RootState) => state.editorReducer);
 
@@ -48,10 +52,11 @@ export const CardMacOSColorMain = () => {
 
   return (
     <div
-      className="w-full bg-[#181818] flex items-center justify-start px-5 py-3"
+      className="w-full flex items-center justify-start px-5 py-3"
       style={{
         borderTopLeftRadius: selector.radius + "px",
         borderTopRightRadius: selector.radius + "px",
+        background: `${selector.backgroundWindow ? background : '#181818'}`
       }}
     >
       <div className="flex items-center space-x-2">

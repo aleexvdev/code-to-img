@@ -1,6 +1,6 @@
 "use client";
 
-import { LANGUAGES } from "@/lib/contants";
+import { languageNames } from "@/data/language-names";
 import { setLanguage } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
 import { Check, ChevronsUpDown } from "lucide-react";
@@ -23,6 +23,8 @@ export const LanguageSelector = () => {
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const LANGUAGES = Object.keys(languageNames);
 
   return (
     <div

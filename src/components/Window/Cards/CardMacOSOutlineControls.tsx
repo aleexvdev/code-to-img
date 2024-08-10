@@ -4,6 +4,10 @@ import { setHeaderWindowControls, setTitleDocument } from "@/store/features/edit
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 
+interface CardMacOSOutlineProps {
+  background: string;
+}
+
 export const CardMacOSOutlineControls = () => {
   const dispatch = useDispatch();
   const HeaderWindowStyle = useSelector(
@@ -35,7 +39,7 @@ export const CardMacOSOutlineControls = () => {
   );
 };
 
-export const CardMacOSOutlineMain = () => {
+export const CardMacOSOutlineMain = ({ background }: CardMacOSOutlineProps) => {
   const dispatch = useDispatch();
   const selector = useSelector((state: RootState) => state.editorReducer);
 

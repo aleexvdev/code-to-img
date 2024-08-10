@@ -6,6 +6,10 @@ import { Minus, Square, X } from "lucide-react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+interface CardWindowProps {
+  background: string;
+}
+
 export const CardWindowControls = () => {
   const dispatch = useDispatch();
   const HeaderWindowStyle = useSelector(
@@ -42,7 +46,7 @@ export const CardWindowControls = () => {
   );
 };
 
-export const CardWindowMain = () => {
+export const CardWindowMain = ({ background }: CardWindowProps) => {
   const dispatch = useDispatch();
   const selector = useSelector((state: RootState) => state.editorReducer);
 

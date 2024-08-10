@@ -4,6 +4,10 @@ import { setHeaderWindowControls, setTitleDocument } from "@/store/features/edit
 import { RootState } from "@/store/store";
 import { useDispatch, useSelector } from "react-redux";
 
+interface CardMacOSGrayProps {
+  background: string;
+}
+
 export const CardMacOSGrayControls = () => {
   const dispatch = useDispatch();
   const HeaderWindowStyle = useSelector(
@@ -35,7 +39,7 @@ export const CardMacOSGrayControls = () => {
   );
 };
 
-export const CardMacOSGrayMain = () => {
+export const CardMacOSGrayMain = ({ background }: CardMacOSGrayProps) => {
   const dispatch = useDispatch();
   const selector = useSelector((state: RootState) => state.editorReducer);
 

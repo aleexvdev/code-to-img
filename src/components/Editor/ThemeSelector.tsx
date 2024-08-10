@@ -1,6 +1,6 @@
 "use client";
 
-import { THEMES } from "@/lib/contants";
+import { themes } from "@/data/themes";
 import { setTheme } from "@/store/features/editorSlice";
 import { RootState } from "@/store/store";
 import { Check, ChevronsUpDown } from "lucide-react";
@@ -23,7 +23,9 @@ export const ThemeSelector = () => {
     dispatch(setTheme(theme));
     setShowDropdown(false);
   };
-  
+
+  const THEMES = Object.keys(themes);
+
   return (
     <div
       className="relative grid w-full py-1 gap-x-2"

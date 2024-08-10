@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { LanguageName } from "@uiw/codemirror-extensions-langs";
 
 interface EditorState {
-  language: string;
+  language: LanguageName;
   codecolor: string;
   background: string;
   padding: string;
@@ -23,13 +24,13 @@ interface EditorState {
 }
 
 const initialState: EditorState = {
-  language: 'JavaScript',
+  language: 'typescript',
   codecolor: 'Monokai',
   background: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
   padding: "16",
   radius: "8",
   theme: "Monokai",
-  linenumber: false,
+  linenumber: true,
   linestart: 1,
   scale: "1x",
   opacity: 100,

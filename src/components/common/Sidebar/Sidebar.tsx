@@ -47,6 +47,7 @@ export const Sidebar = () => {
         </MaxContentItem>
         <Separator />
         <MaxContentItem title="Window">
+          <BackgroundWindow />
           <HeaderSelector />
           {stateHeaderWindow && <HeaderWindowControls />}
           <WatermarkSelector />

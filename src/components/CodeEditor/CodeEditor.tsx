@@ -1,25 +1,21 @@
 "use client";
 
 import { RootState } from "@/store/store";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Resizable } from "re-resizable";
-import AceEditor from "react-ace";
+import CodeMirror from "@uiw/react-codemirror";
+import { color } from "@uiw/codemirror-extensions-color";
+import { langs, LanguageName } from "@uiw/codemirror-extensions-langs";
+import { Extension } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { themes } from "@/data/themes";
+import createTheme from "@uiw/codemirror-themes";
 import { CardMacOSColorMain } from "../Window/Cards/CardMacOSColorControls";
-import { CardWindowMain } from "../Window/Cards/CardWindowControls";
 import { CardMacOSGrayMain } from "../Window/Cards/CardMacOSGrayControls";
 import { CardMacOSOutlineMain } from "../Window/Cards/CardMacOSOutlineControls";
-//languages
-import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/mode-html";
-import "ace-builds/src-noconflict/mode-css";
-import "ace-builds/src-noconflict/mode-python";
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/mode-typescript";
-//themes
-import "ace-builds/src-noconflict/theme-monokai";
-import "ace-builds/src-noconflict/theme-terminal";
-import "ace-builds/src-noconflict/theme-twilight";
+import { CardWindowMain } from "../Window/Cards/CardWindowControls";
+
+const baseExtensions: Extension = [];
 
 export const CodeEditor = () => {
   const dispatch = useDispatch();
@@ -41,6 +37,64 @@ export const CodeEditor = () => {
     border,
   } = useSelector((state: RootState) => state.editorReducer);
 
+  const [extensions, setExtensions] = useState<Extension[]>([]);
+  const fontSize = 16;
+  const lineWrapping = false;
+  const readOnly = false;
+
+  const basicSetup = useMemo(
+    () => ({
+      foldGutter: false,
+      foldKeymap: false,
+      searchKeymap: false,
+      highlightActiveLine: false,
+      highlightActiveLineGutter: false,
+      drawSelection: false,
+      rectangularSelection: false,
+      highlightSelectionMatches: false,
+      allowMultipleSelections: false,
+      bracketMatching: false,
+      highlightSpecialChars: false,
+      syntaxHighlighting: false,
+      autocompletion: false,
+      lineNumbers: linenumber,
+    }),
+    [linenumber]
+  );
+
+  const t = useMemo(() => {
+    const options = themes[theme]?.options;
+    if (options) {
+      const createdTheme = createTheme({
+        ...options,
+        settings: {
+          ...options.settings,
+          // background: 'transparent',
+          // gutterBackground: 'transparent',
+          gutterBorder: "transparent",
+        },
+      });
+
+      return {
+        extension: createdTheme,
+        settings: options.settings, // Retorna las settings para usarlas más tarde
+      };
+    }
+    return undefined;
+  }, [theme]);
+
+  console.log(t);
+
+  useEffect(() => {
+    setExtensions([
+      baseExtensions,
+      color,
+      langs[language](),
+      ...(lineWrapping ? [EditorView.lineWrapping] : []),
+      EditorView.editable.of(!readOnly),
+    ]);
+  }, [language, lineWrapping, readOnly]);
+
   return (
     <div
       className="min-w-full h-full"
@@ -49,6 +103,7 @@ export const CodeEditor = () => {
           "linear-gradient(45deg, #252525 25%, transparent 0), linear-gradient(-45deg, #252525 25%, transparent 0), linear-gradient(45deg, transparent 75%, #252525 0), linear-gradient(-45deg, transparent 75%, #252525 0)",
         backgroundSize: "20px 20px",
         backgroundPosition: "0 0,0 10px,10px -10px,-10px 0",
+        borderRadius: radius + "px",
       }}
     >
       <div
@@ -76,42 +131,27 @@ export const CodeEditor = () => {
                 ? "0 0 0 1px rgba(0, 0, 0, .1), 0 0 0 1px rgba(0,0,0,.9), inset 0 0 0 1.5px rgba(255, 255, 255, .4)"
                 : ""
             }`,
-            padding: `${border ? "2px" : "0px"}`,
+            padding: `${border ? "3px 2px" : "0px"}`,
           }}
         >
-          {headerWindow && windowControls(headerWindowControls)}
+          {headerWindow && windowControls(headerWindowControls, t?.settings?.background || "defaultBackgroundColor")}
           <div className="w-full h-full">
-            <AceEditor
+            <CodeMirror
               value={`function onLoad(editor) { \n console.log("i've loaded");\n}`}
-              fontSize={16}
-              wrapEnabled={true}
-              showPrintMargin={false}
-              highlightActiveLine={false}
-              showGutter={linenumber}
-              name="code-editor"
-              editorProps={{ $blockScrolling: true }}
-              className="code-editor"
-              theme={theme.toLocaleLowerCase()}
-              mode={language.toLocaleLowerCase()}
               height={`${headerWindow ? "calc(100% - 56px)" : "100%"}`}
+              width="100%"
+              extensions={extensions}
+              theme={t}
+              basicSetup={basicSetup}
               style={{
+                fontSize,
                 borderTopLeftRadius: `${headerWindow ? "" : radius + "px"}`,
                 borderTopRightRadius: `${headerWindow ? "" : radius + "px"}`,
                 borderBottomLeftRadius: radius + "px",
                 borderBottomRightRadius: radius + "px",
-                padding: "16px",
-              }}
-              tabSize={1}
-              setOptions={{
-                firstLineNumber: parseInt(linestart.toString()),
-                backgroundColor: `${backgroundWindow ? background : "none"}`,
+                height: "100%",
               }}
             />
-            {watermark && (
-              <div className="absolute bottom-3 right-5 text-white text-wrap opacity-20 z-10 text-lg">
-                CodeShot
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -119,15 +159,16 @@ export const CodeEditor = () => {
   );
 };
 
-const windowControls = (value: string) => {
+
+const windowControls = (value: string, background: string) => {
   switch (value) {
     case "macOS - Color":
-      return <CardMacOSColorMain />;
+      return <CardMacOSColorMain background={background} />;
     case "macOS - Gray":
-      return <CardMacOSGrayMain />;
+      return <CardMacOSGrayMain background={background} />;
     case "macOS - Outline":
-      return <CardMacOSOutlineMain />;
+      return <CardMacOSOutlineMain background={background} />;
     default:
-      return <CardWindowMain />;
+      return <CardWindowMain background={background} />;
   }
 };
