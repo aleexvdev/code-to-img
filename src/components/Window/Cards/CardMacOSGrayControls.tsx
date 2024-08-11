@@ -53,6 +53,7 @@ export const CardMacOSGrayMain = ({ background }: CardMacOSGrayProps) => {
       style={{
         borderTopLeftRadius: selector.radius + "px",
         borderTopRightRadius: selector.radius + "px",
+        background: `${selector.backgroundWindow ? '#181818' : background}`
       }}
     >
       <div className="flex items-center space-x-2">

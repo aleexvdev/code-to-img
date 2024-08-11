@@ -60,6 +60,7 @@ export const CardWindowMain = ({ background }: CardWindowProps) => {
       style={{
         borderTopLeftRadius: selector.radius + "px",
         borderTopRightRadius: selector.radius + "px",
+        background: `${selector.backgroundWindow ? '#181818' : background}`
       }}
     >
       <div className="w-max min-w-20 bg-[#303030] rounded-md px-2 py-0.5">

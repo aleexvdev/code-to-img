@@ -3,7 +3,6 @@ import { LanguageName } from "@uiw/codemirror-extensions-langs";
 
 interface EditorState {
   language: LanguageName;
-  codecolor: string;
   background: string;
   padding: string;
   radius: string;
@@ -25,23 +24,22 @@ interface EditorState {
 
 const initialState: EditorState = {
   language: 'typescript',
-  codecolor: 'Monokai',
-  background: 'linear-gradient(354deg,#ff75b5,#ffb86c)',
-  padding: "16",
-  radius: "8",
-  theme: "Monokai",
+  background: 'linear-gradient(135deg, #E233FF 0%, #FF6B00 100%)',
+  padding: "32",
+  radius: "16",
+  theme: "vsCode",
   linenumber: true,
   linestart: 1,
   scale: "1x",
   opacity: 100,
-  width: 800,
+  width: 550,
   height: 600,
   border: false,
   headerWindow: true,
   headerWindowControls: "macOS - Color",
   watermark: false,
   showAccent: false,
-  backgroundWindow: true,
+  backgroundWindow: false,
   titleDocument: "Untitled"
 };
 
@@ -51,9 +49,6 @@ const editorSlice = createSlice({
   reducers: {
     setLanguage: (state, action) => {
       state.language = action.payload;
-    },
-    setCodeColor: (state, action) => {
-      state.codecolor = action.payload;
     },
     setBackground: (state, action) => {
       state.background = action.payload;
@@ -111,7 +106,6 @@ const editorSlice = createSlice({
 
 export const {
   setLanguage,
-  setCodeColor,
   setBackground,
   setPadding,
   setRadius,

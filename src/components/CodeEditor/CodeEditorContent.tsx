@@ -5,7 +5,7 @@ import { CodeEditor } from "./CodeEditor";
 
 export const CodeEditorContent = () => {
   return (
-    <div className="relative w-full h-full polka p-32">
+    <div className="relative w-full h-full polka flex items-center">
       <div className="w-full h-full flex items-center justify-center">
         <CodeEditor />
       </div>
