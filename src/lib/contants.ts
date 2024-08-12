@@ -1,19 +1,8 @@
-export const LANGUAGES = [
-  'JavaScript',
-  'TypeScript',
-  'Python',
-  'Java'
+export const THEMES_APP = [
+  'system',
+  'dark',
+  'light'
 ];
-
-export const as = [
-  {
-    name: 'JavaScript',
-    extension: ".js",
-    abbreviation: "JS",
-    icon: "javascript.svg"
-  },
-  
-]
 
 export const CODE_COLORS = ["Monokai", "Twilight", "Terminal"];
 

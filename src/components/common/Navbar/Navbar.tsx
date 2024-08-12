@@ -2,20 +2,36 @@
 
 import Link from "next/link";
 import { MaxWidthWrapper } from "../MaxWidthWrapper";
-import { Copy, Download, Image as ImgLucide, Keyboard } from "lucide-react";
+import {
+  Check,
+  Computer,
+  Copy,
+  Download,
+  Image as ImgLucide,
+  Keyboard,
+  Moon,
+  Sun,
+} from "lucide-react";
 import { useState } from "react";
-import { SCALES } from "@/lib/contants";
+import { SCALES, THEMES_APP } from "@/lib/contants";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { setScale } from "@/store/features/editorSlice";
 import OutsideClickHandler from "react-outside-click-handler";
+import { setThemeApp } from "@/store/features/themeSlice";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const selectedScale = useSelector(
     (state: RootState) => state.editorReducer.scale
   );
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const selectedThemeApp = useSelector(
+    (state: RootState) => state.themeAppReducer
+  );
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isDropdownOpenTheme, setIsDropdownOpenTheme] =
+    useState<boolean>(false);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -25,16 +41,71 @@ export const Navbar = () => {
     dispatch(setScale(scale));
   };
 
+  const handleDropdownToggleTheme = () => {
+    setIsDropdownOpenTheme(!isDropdownOpenTheme);
+  };
+
+  const handleThemeChange = (themeApp: string) => {
+    dispatch(setThemeApp(themeApp));
+    setIsDropdownOpenTheme(false);
+  };
+
   return (
     <>
       <nav className="w-full px-4 h-20 bg-[#181818]">
         <MaxWidthWrapper>
           <div className="w-full h-full flex items-center justify-between">
-            <div className="font-semibold text-2xl">
-              <Link href="/" className="text-white">
-                Co<span className="text-blue-400">deSh</span><span className="text-blue-500">ot</span>
-              </Link>
-            </div>
+            <OutsideClickHandler
+              onOutsideClick={() => setIsDropdownOpenTheme(false)}
+            >
+              <div className="relative font-semibold text-2xl w-64 flex items-center justify-between">
+                <Link href="/" className="text-white">
+                  Co<span className="text-blue-400">deSh</span>
+                  <span className="text-blue-500">ot</span>
+                </Link>
+                <motion.button
+                  className="mr-2.5 border border-[#5757573b] flex items-center justify-center p-2 rounded-md hover:bg-[#232323] hover:text-white hover:shadow-md hover:shadow-[#1D1D1D]"
+                  onClick={handleDropdownToggleTheme}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {selectedThemeApp.themeApp === "system" && (
+                    <Computer size={20} color="white" />
+                  )}
+                  {selectedThemeApp.themeApp === "dark" && (
+                    <Moon size={20} color="white" />
+                  )}
+                  {selectedThemeApp.themeApp === "light" && (
+                    <Sun size={20} color="white" />
+                  )}
+                </motion.button>
+                {isDropdownOpenTheme && (
+                  <motion.div
+                    className="absolute top-11 right-2 z-50"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-full flex flex-col items-center px-1 py-1 bg-[#232323] text-[#CCCCCC] rounded-lg shadow-lg shadow-black">
+                      {THEMES_APP.map((theme) => (
+                        <motion.button
+                          key={theme}
+                          className={`h-full flex items-center justify-center py-2 px-3 w-full rounded-md text-xs capitalize ${
+                            selectedThemeApp.themeApp === theme
+                              ? "bg-[#404040]"
+                              : ""
+                          }`}
+                          onClick={() => handleThemeChange(theme)}
+                        >
+                          {theme}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            </OutsideClickHandler>
             <OutsideClickHandler
               onOutsideClick={() => setIsDropdownOpen(false)}
             >
